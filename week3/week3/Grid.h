@@ -9,8 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface Grid : NSObject
+{
+    int blankPos[2];
+}
 
 @property(retain) NSMutableArray *rows;
 
--(void)initRows:(int)rowNum;
+-initRows:(int)rowNum;
+-(void)render;
+-(void)moveVertical:(int)direction;
+-(void)moveHorizontal:(int)direction;
 @end
