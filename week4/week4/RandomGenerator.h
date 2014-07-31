@@ -10,4 +10,5 @@
 
 @interface RandomGenerator : NSObject
 - (void)generate;
+@property NSNumber *num;
 @end

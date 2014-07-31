@@ -36,7 +36,12 @@ int BO = 3;
     // notiCenter 생성
     NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
     // notiCenter 등록
-    [notiCenter addObserver:self selector:@selector(receiveRandomGeneratorNotification:) name:@"RandomGenerate" object:randomGenerator];
+    
+    // KVO
+    [randomGenerator addObserver:self forKeyPath:@"num" options:NSKeyValueObservingOptionNew context:nil];
+    
+    // not KVO
+//    [notiCenter addObserver:self selector:@selector(receiveRandomGeneratorNotification:) name:@"RandomGenerate" object:randomGenerator];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +55,11 @@ int BO = 3;
     if ([[notification name] isEqualToString:@"RandomGenerate"]) {
         self.num = [[notification userInfo] objectForKey:@"num"];
     }
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    self.num = [change objectForKey:@"new"];
 }
 
 - (IBAction)playBtn:(id)sender {
