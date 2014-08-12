@@ -64,6 +64,9 @@
 		4769E067198A1E9F0054A5F2 /* bo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bo.png; sourceTree = "<group>"; };
 		4769E068198A1E9F0054A5F2 /* bawi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bawi.png; sourceTree = "<group>"; };
 		4769E069198A1E9F0054A5F2 /* gawi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gawi.png; sourceTree = "<group>"; };
+		478025461990B36000F3BC8E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		478025471990B36000F3BC8E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		478025481990B36100F3BC8E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +239,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 4769E01F198A15F70054A5F2;
 			productRefGroup = 4769E029198A15F70054A5F2 /* Products */;
@@ -308,6 +312,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4769E035198A15F70054A5F2 /* en */,
+				478025481990B36100F3BC8E /* ko */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4769E03E198A15F70054A5F2 /* Base */,
+				478025461990B36000F3BC8E /* ko */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -324,6 +330,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4769E041198A15F70054A5F2 /* Base */,
+				478025471990B36000F3BC8E /* ko */,
 			);
 			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
@@ -496,6 +503,7 @@
 				4769E05F198A15F70054A5F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4769E060198A15F70054A5F2 /* Build configuration list for PBXNativeTarget "week4Tests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +512,7 @@
 				4769E062198A15F70054A5F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

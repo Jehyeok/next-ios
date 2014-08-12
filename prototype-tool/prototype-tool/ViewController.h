@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ImageViewController.h"
 
-@interface ViewController : UIViewController 
+@interface ViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *galleryBtn;
 @end

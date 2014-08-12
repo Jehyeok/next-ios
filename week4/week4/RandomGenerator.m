@@ -9,7 +9,7 @@
 #import "RandomGenerator.h"
 
 @implementation RandomGenerator
-@synthesize num;
+//@synthesize num;
 - (void) generate
 {
     // 1 ~ 3 생성
@@ -19,6 +19,8 @@
     self.num = [NSNumber numberWithInt:intNum];
     
     // not KVO
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"RandomGenerate" object:self userInfo:@{@"num": [NSNumber numberWithInt:intNum]}] ;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RandomGenerate" object:self userInfo:@{@"num": [NSNumber numberWithInt:intNum]}] ;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:intNum] forKey:@"num"];
 }
 @end

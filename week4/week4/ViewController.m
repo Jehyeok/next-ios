@@ -34,7 +34,7 @@ int BO = 3;
     randomGenerator = [[RandomGenerator alloc] init];
     
     // notiCenter 생성
-    NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
+//    NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
     // notiCenter 등록
     
     // KVO

@@ -41,14 +41,16 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    NSLog(@"info: %@", info);
-    
     [picker dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"info: %@", [info objectForKey:@"UIImagePickerControllerOriginalImage"]);
+        
         ImageViewController* ivc = [self.storyboard instantiateViewControllerWithIdentifier:@"ImageVC"];
+//        [ivc.photoView setBackgroundColor:[UIColor redColor]];
+//        [ivc.photoView setImage:[info objectForKey:@"UIImagePickerControllerOriginalImage"]];
+        ivc.photo = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         [self presentViewController:ivc animated:YES completion:nil];
+//        [self.view addSubview:ivc.photoView];
     }];
-    
-    
 }
 
 @end
