@@ -9,7 +9,7 @@
 #import "Album.h"
 
 @implementation Album
-@synthesize photos;
+@synthesize photos, originPhotos;
 
 - (id)initWithPhotos:(NSMutableArray*)data
 {
@@ -18,13 +18,29 @@
     {
 
     }
+    
     // 1 ~ 3 생성
     int intNum = arc4random() % 3 + 1;
     
+    originPhotos = [[NSMutableArray alloc] initWithArray:data];
     photos = [[NSMutableArray alloc] initWithArray:data];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"AlbumChanged" object:self userInfo:@{@"num": [NSNumber numberWithInt:intNum]}] ;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AlbumChanged" object:self userInfo:@{@"num": [NSNumber numberWithInt:intNum]}];
     
     return self;
 }
+
+- (void)sort
+{
+    photos = [originPhotos sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [[obj1 objectForKey:@"date"] compare:[obj2 objectForKey:@"date"]];
+    }];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"sortAlbum" object:self];
+}
+
+- (void)setPhotosToOrigin
+{
+    photos = originPhotos;
+}
+
 @end

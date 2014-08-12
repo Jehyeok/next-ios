@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Album.h"
+#import "PhotoViewController.h"
 
 @interface AlbumViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *albumTableView;
 @property (strong, nonatomic) Album* album;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sort;
+@property (strong, nonatomic) PhotoViewController *photoViewController;
 @end

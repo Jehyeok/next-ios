@@ -10,6 +10,9 @@
 
 @interface Album : NSObject
 @property (strong, nonatomic) NSMutableArray *photos;
+@property (strong, nonatomic) NSMutableArray *originPhotos;
 
 - (id)initWithPhotos:(NSMutableArray*)data;
+- (void)sort;
+- (void)setPhotosToOrigin;
 @end

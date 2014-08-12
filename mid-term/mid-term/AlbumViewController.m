@@ -15,16 +15,19 @@
 @implementation AlbumViewController
 @synthesize album;
 @synthesize albumTableView;
+@synthesize photoViewController;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
+	// Do any additional setup after loading the view, typically from a nib.
+    photoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"photoVC"];
     // notiCenter 생성
     NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
     // notiCenter 등록
-    [notiCenter addObserver:self selector:@selector(receiveRandomGeneratorNotification:) name:@"AlbumChanged" object:album];
+    [notiCenter addObserver:self selector:@selector(receiveInitPhotoNotification:) name:@"AlbumChanged" object:album];
+    [notiCenter addObserver:self selector:@selector(receiveSortNotification:) name:@"sortAlbum" object:album];
     
     // data 초기화
     char *data = "[{\"title\":\"초록\",\"image\":\"01.jpg\",\"date\":\"20140116\"},\ {\"title\":\"장미\",\"image\":\"02.jpg\",\"date\":\"20140505\"},\ {\"title\":\"낙엽\",\"image\":\"03.jpg\",\"date\":\"20131212\"},\ {\"title\":\"계단\",\"image\":\"04.jpg\",\"date\":\"20130301\"},\ {\"title\":\"벽돌\",\"image\":\"05.jpg\",\"date\":\"20140101\"},\ {\"title\":\"바다\",\"image\":\"06.jpg\",\"date\":\"20130707\"},\ {\"title\":\"벌레\",\"image\":\"07.jpg\",\"date\":\"20130815\"},\ {\"title\":\"나무\",\"image\":\"08.jpg\",\"date\":\"20131231\"},\ {\"title\":\"흑백\",\"image\":\"09.jpg\",\"date\":\"20140102\"}]";
@@ -49,12 +52,18 @@
     
 }
 
-- (void)receiveRandomGeneratorNotification:(NSNotification *)notification
+- (void)receiveInitPhotoNotification:(NSNotification *)notification
 {
-//    NSLog(@"noti");
+    NSLog(@"noti");
     if ([[notification name] isEqualToString:@"AlbumChanged"]) {
 //        NSLog(@"%@",[[notification userInfo] objectForKey:@"num"]);
     }
+}
+
+- (void)receiveSortNotification:(NSNotification *)notification
+{
+    NSLog(@"noti");
+    [albumTableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -73,11 +82,33 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
     
-//    cell.textLabel.text = [[album.photos objectAtIndex:0]];
     cell.textLabel.text = [[album.photos objectAtIndex:indexPath.row] objectForKey:@"title"];
     cell.detailTextLabel.text = [[album.photos objectAtIndex:indexPath.row] objectForKey:@"date"];
     
     return cell;
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    photoViewController.data = @{
+                     @"title":[[album.photos objectAtIndex:indexPath.row] objectForKey:@"title"],
+                     @"date":[[album.photos objectAtIndex:indexPath.row] objectForKey:@"date"],
+                     @"image":[[album.photos objectAtIndex:indexPath.row] objectForKey:@"image"]
+                     };
+    [self.navigationController pushViewController:photoViewController animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (IBAction)sortBtn:(id)sender {
+    [album sort];
+}
+
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if(event.type == UIEventSubtypeMotionShake)
+    {
+        [album setPhotosToOrigin];
+        [albumTableView reloadData];
+    }
 }
 
 @end
