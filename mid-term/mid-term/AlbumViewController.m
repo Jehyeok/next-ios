@@ -54,7 +54,7 @@
 
 - (void)receiveInitPhotoNotification:(NSNotification *)notification
 {
-    NSLog(@"noti");
+//    NSLog(@"noti");
     if ([[notification name] isEqualToString:@"AlbumChanged"]) {
 //        NSLog(@"%@",[[notification userInfo] objectForKey:@"num"]);
     }
@@ -62,31 +62,44 @@
 
 - (void)receiveSortNotification:(NSNotification *)notification
 {
-    NSLog(@"noti");
+//    NSLog(@"noti");
     [albumTableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"delegate");
+//    NSLog(@"delegate");
     return [album.photos count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"SimpleTableItem";
+    static NSString *simpleTableIdentifier = @"customCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
-    }
-    
-    cell.textLabel.text = [[album.photos objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.detailTextLabel.text = [[album.photos objectAtIndex:indexPath.row] objectForKey:@"date"];
+    cell.cellTitle.text = [[album.photos objectAtIndex:indexPath.row] objectForKey:@"title"];
+//    cell.detailTextLabel.text = [[album.photos objectAtIndex:indexPath.row] objectForKey:@"date"];
+    [cell.imageView setImage:[UIImage imageNamed:[[album.photos objectAtIndex:indexPath.row] objectForKey:@"image"]]];
     
     return cell;
 }
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *simpleTableIdentifier = @"SimpleTableItem";
+//    
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+//    
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
+//    }
+//    
+//    cell.textLabel.text = [[album.photos objectAtIndex:indexPath.row] objectForKey:@"title"];
+//    cell.detailTextLabel.text = [[album.photos objectAtIndex:indexPath.row] objectForKey:@"date"];
+//    
+//    return cell;
+//}
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     photoViewController.data = @{

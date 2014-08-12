@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Album.h"
 #import "PhotoViewController.h"
+#import "CustomCell.h"
 
 @interface AlbumViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *albumTableView;

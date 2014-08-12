@@ -46,6 +46,7 @@
 		478188D51999DB4E00550A2F /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 478188BF1999DB4E00550A2F /* 02.jpg */; };
 		478188D61999DB4E00550A2F /* 01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 478188C01999DB4E00550A2F /* 01.jpg */; };
 		478188DA1999E54100550A2F /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478188D91999E54100550A2F /* PhotoViewController.m */; };
+		478188DF1999FB1500550A2F /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 478188DE1999FB1500550A2F /* CustomCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		478188C01999DB4E00550A2F /* 01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 01.jpg; sourceTree = "<group>"; };
 		478188D81999E54100550A2F /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		478188D91999E54100550A2F /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		478188DD1999FB1500550A2F /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		478188DE1999FB1500550A2F /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,8 @@
 				478188A91999D88000550A2F /* Album.m */,
 				478188D81999E54100550A2F /* PhotoViewController.h */,
 				478188D91999E54100550A2F /* PhotoViewController.m */,
+				478188DD1999FB1500550A2F /* CustomCell.h */,
+				478188DE1999FB1500550A2F /* CustomCell.m */,
 			);
 			path = "mid-term";
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 			files = (
 				4781888A1999D7BA00550A2F /* AlbumViewController.m in Sources */,
 				478188811999D7BA00550A2F /* AppDelegate.m in Sources */,
+				478188DF1999FB1500550A2F /* CustomCell.m in Sources */,
 				4781887D1999D7BA00550A2F /* main.m in Sources */,
 				478188AA1999D88000550A2F /* Album.m in Sources */,
 				478188DA1999E54100550A2F /* PhotoViewController.m in Sources */,
