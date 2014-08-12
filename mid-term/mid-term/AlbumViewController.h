@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Album.h"
 
-@interface AlbumViewController : UIViewController
+@interface AlbumViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *albumTableView;
 @property (strong, nonatomic) Album* album;
 @end

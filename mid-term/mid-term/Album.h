@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Album : NSObject {
-    char *data;
-}
+@interface Album : NSObject
+@property (strong, nonatomic) NSMutableArray *photos;
 
 - (id)initWithPhotos:(NSMutableArray*)data;
 @end

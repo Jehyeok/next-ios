@@ -9,6 +9,8 @@
 #import "Album.h"
 
 @implementation Album
+@synthesize photos;
+
 - (id)initWithPhotos:(NSMutableArray*)data
 {
     self = [super init];
@@ -19,8 +21,8 @@
     // 1 ~ 3 생성
     int intNum = arc4random() % 3 + 1;
     
-//    NSLog(@"album noti post");
-    // not KVO
+    photos = [[NSMutableArray alloc] initWithArray:data];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"AlbumChanged" object:self userInfo:@{@"num": [NSNumber numberWithInt:intNum]}] ;
     
     return self;
