@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Reachability.h"
 
-@interface Album : NSObject
+@interface Album : NSObject <NSURLConnectionDelegate>
 @property (strong, nonatomic) NSMutableArray *photos;
 @property (strong, nonatomic) NSMutableArray *originPhotos;
+@property (strong, nonatomic) NSString *cachePath;
+@property (strong, nonatomic) Reachability *reachability;
 
 - (id)initWithPhotos:(NSMutableArray*)data;
 - (void)sort;

@@ -29,17 +29,10 @@
     [notiCenter addObserver:self selector:@selector(receiveInitPhotoNotification:) name:@"AlbumChanged" object:album];
     [notiCenter addObserver:self selector:@selector(receiveSortNotification:) name:@"sortAlbum" object:album];
     
-    // data 초기화
-    char *data = "[{\"title\":\"초록\",\"image\":\"01.jpg\",\"date\":\"20140116\"},\ {\"title\":\"장미\",\"image\":\"02.jpg\",\"date\":\"20140505\"},\ {\"title\":\"낙엽\",\"image\":\"03.jpg\",\"date\":\"20131212\"},\ {\"title\":\"계단\",\"image\":\"04.jpg\",\"date\":\"20130301\"},\ {\"title\":\"벽돌\",\"image\":\"05.jpg\",\"date\":\"20140101\"},\ {\"title\":\"바다\",\"image\":\"06.jpg\",\"date\":\"20130707\"},\ {\"title\":\"벌레\",\"image\":\"07.jpg\",\"date\":\"20130815\"},\ {\"title\":\"나무\",\"image\":\"08.jpg\",\"date\":\"20131231\"},\ {\"title\":\"흑백\",\"image\":\"09.jpg\",\"date\":\"20140102\"}]";
-    
-    // char -> json 역직렬화
-    NSString *dataStringObj = [[NSString alloc] initWithUTF8String:data];
-    NSData *dataFromStirng = [dataStringObj dataUsingEncoding:NSUTF8StringEncoding];
-//    NSLog(@"%@", dataStringObj);
-    NSMutableArray *dataArr = [NSJSONSerialization JSONObjectWithData:dataFromStirng options:0 error:nil];
+
 //    NSLog(@"%@", dataArr);
     // 이미지 앨범 초기화
-    album = [[Album alloc] initWithPhotos:dataArr];
+    album = [[Album alloc] init];
     
     albumTableView.delegate = self;
     albumTableView.dataSource = self;
@@ -56,7 +49,8 @@
 {
 //    NSLog(@"noti");
     if ([[notification name] isEqualToString:@"AlbumChanged"]) {
-//        NSLog(@"%@",[[notification userInfo] objectForKey:@"num"]);
+        NSLog(@"%@",[[notification userInfo] objectForKey:@"num"]);
+        [albumTableView reloadData];
     }
 }
 
@@ -79,8 +73,7 @@
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     cell.cellTitle.text = [[album.photos objectAtIndex:indexPath.row] objectForKey:@"title"];
-//    cell.detailTextLabel.text = [[album.photos objectAtIndex:indexPath.row] objectForKey:@"date"];
-    [cell.imageView setImage:[UIImage imageNamed:[[album.photos objectAtIndex:indexPath.row] objectForKey:@"image"]]];
+    [cell.cellImgaeView setImage:[UIImage imageNamed:[[album.photos objectAtIndex:indexPath.row] objectForKey:@"image"]]];
     
     return cell;
 }
