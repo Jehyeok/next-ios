@@ -14,7 +14,7 @@
 @end
 
 @implementation DetailViewController
-
+@synthesize outputStream, inputStream;
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
@@ -56,8 +56,8 @@
     
     CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)@"127.0.0.1", 8000, &readStream, &writeStream);
     
-    NSInputStream *inputStream = (__bridge_transfer NSInputStream *)readStream;
-    NSOutputStream *outputStream = (__bridge_transfer NSOutputStream *)writeStream;
+    inputStream = (__bridge_transfer NSInputStream *)readStream;
+    outputStream = (__bridge_transfer NSOutputStream *)writeStream;
     [inputStream setDelegate:self];
     [outputStream setDelegate:self];
     [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
@@ -101,10 +101,11 @@
                 
                 if (self.contentLength == self.summedLength) {
                     [self.detailImageView setImage:[UIImage imageWithData:self.data]];
+                    uint8_t buf[3] = "ACK";
+                    [outputStream write:buf maxLength:3];
                     self.flag = NO;
                     self.summedLength = 0;
                     self.data = [[NSMutableData alloc] init];
-                    NSLog(@"draw");
                 }
             } else {
                 NSLog(@"no buffer!");
@@ -122,6 +123,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    
+}
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
