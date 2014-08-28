@@ -50,11 +50,14 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"began: %d", touches.count);
+//    NSLog(@"moved: %d", [[touches anyObject] count]);
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"moved: %d", [[touches allObjects] count]);
+    NSArray *touchesArr=[[event allTouches] allObjects];
+    if ([touchesArr count] == 2) {
+        NSLog(@"2");
+    }
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
