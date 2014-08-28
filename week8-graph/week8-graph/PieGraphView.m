@@ -43,19 +43,13 @@
                      NO);
         CGPathAddLineToPoint(arc, NULL, 100.0, 100.0);
         
-        CGPathRef strokedArc =
-        CGPathCreateCopyByStrokingPath(arc, NULL,
-                                       1.0,
-                                       kCGLineCapButt,
-                                       kCGLineJoinMiter, // the default
-                                       10);
-        CGContextAddPath(myContext, strokedArc);
+        CGContextAddPath(myContext, arc);
         
-        CGContextSetStrokeColorWithColor(myContext, [UIColor blueColor].CGColor);
-        CGContextSetFillColorWithColor(myContext, [[UIColor blueColor] CGColor]);
-//        CGContextFillPath(myContext);
-        CGContextDrawPath(myContext, kCGPathFillStroke);
-        
+        float color = arc4random() % 255 + 1;
+        color /= 255.0;
+        CGContextSetStrokeColorWithColor(myContext, [[UIColor blueColor] CGColor]);
+        CGContextSetFillColorWithColor(myContext, [[UIColor colorWithRed:color green:color blue:color alpha:1.0] CGColor]);
+        CGContextFillPath(myContext);
         start += arcLength;
     }
 }
