@@ -27,7 +27,7 @@
     
     int HEIGHT = 30;
     int INTERVAL = 0;
-    
+    NSLog(@"draw rect");
     for (NSDictionary *monthData in self.monthArr) {
         NSString *title = [monthData objectForKey:@"title"];
         [title drawInRect:CGRectMake(0.0, INTERVAL, 60.0, HEIGHT) withAttributes:nil];

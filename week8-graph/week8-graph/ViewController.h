@@ -11,7 +11,8 @@
 #import "PieGraphView.h"
 
 @interface ViewController : UIViewController
-@property (strong, nonatomic) IBOutlet BarGraphView *barGraphView;
 @property (strong, nonatomic) IBOutlet PieGraphView *pieGraphView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) BarGraphView *barGraphView;
 
 @end

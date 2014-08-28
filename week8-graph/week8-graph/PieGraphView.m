@@ -26,7 +26,6 @@
     // context 받기
     CGContextRef myContext = UIGraphicsGetCurrentContext();
     
-    NSLog(@"%@", self.pieArr);
     float start = 0.0;
     for (NSDictionary *monthData in self.pieArr) {
         int radius = 100;

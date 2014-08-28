@@ -18,6 +18,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.barGraphView = [[BarGraphView alloc] initWithFrame:CGRectMake(0, 0, 200, 500)];
+    [self.barGraphView setBackgroundColor:[UIColor clearColor]];
+    
     NSString *monthData = @"[{\"title\":\"April\", \"value\":5},{\"title\":\"May\", \"value\":12},{\"title\":\"June\", \"value\":18},{\"title\":\"July\", \"value\":11},{\"title\":\"August\", \"value\":15},{\"title\":\"September\", \"value\":9},{\"title\":\"October\", \"value\":17},{\"title\":\"November\", \"value\":25},{\"title\":\"December\", \"value\":31}]";
     NSData *monthNSData = [monthData dataUsingEncoding:NSUTF8StringEncoding];
     NSArray *monthArr = [NSJSONSerialization JSONObjectWithData:monthNSData options:NSJSONReadingMutableContainers error:nil];
@@ -28,6 +31,9 @@
     
     self.barGraphView.monthArr = monthArr;
     self.pieGraphView.pieArr = pieArr;
+    
+    [self.scrollView setContentSize:CGSizeMake(200, 500)];
+    [self.scrollView addSubview:self.barGraphView];
 }
 
 - (void)didReceiveMemoryWarning
