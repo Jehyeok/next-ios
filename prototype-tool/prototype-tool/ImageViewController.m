@@ -27,14 +27,57 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"view did load");
+    _photoView = [[UIImageView alloc] initWithFrame:CGRectMake(100.0f, 100.0f, 200.0f, 100.0f)];
+    [_photoView setImage:_photo];
+    _scrollV.contentSize=CGSizeMake(320, 568);
+    [_scrollV addSubview:_photoView];
+    [_scrollV setBackgroundColor:[UIColor clearColor]];
     
-    [self.photoView setImage:self.photo];
+    _scrollV.minimumZoomScale=0.5;
+    _scrollV.maximumZoomScale=6.0;
+    _scrollV.delegate=self;
+    NSLog(@"%f", _scrollV.contentSize.width);
+//    self.imageViewManipulator = [[ImageViewManipulator alloc] init];
+//    [self.imageViewManipulator setImageView:self.photoView];
+//    [self.imageViewManipulator setImage:self.photo];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return _photoView;
+    NSLog(@"%f", _scrollV.contentSize.width);
+}
+
+- (void)centerScrollViewContents {
+    CGSize boundsSize = self.scrollV.bounds.size;
+    CGRect viewFrame = self.view.frame;
+    
+    if (viewFrame.size.width < boundsSize.width) {
+        viewFrame.origin.x = (boundsSize.width - viewFrame.size.width) / 2.0f;
+    } else {
+        viewFrame.origin.x = 0.0f;
+    }
+    
+    if (viewFrame.size.height < boundsSize.height) {
+        viewFrame.origin.y = (boundsSize.height - viewFrame.size.height) / 2.0f;
+    } else {
+        viewFrame.origin.y = 0.0f;
+    }
+    
+    self.view.frame = viewFrame;
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    // The scroll view has zoomed, so you need to re-center the contents
+    [self centerScrollViewContents];
+    NSLog(@"didzoom");
 }
 
 /*
@@ -48,23 +91,4 @@
 }
 */
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-//    NSLog(@"moved: %d", [[touches anyObject] count]);
-}
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSArray *touchesArr=[[event allTouches] allObjects];
-    if ([touchesArr count] == 2) {
-        NSLog(@"2");
-    }
-}
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-}
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-}
 @end

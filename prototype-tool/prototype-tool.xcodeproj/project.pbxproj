@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		474E99CB19B2C1020079BC8D /* ImageViewManipulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 474E99CA19B2C1020079BC8D /* ImageViewManipulator.m */; };
 		4793467119877864004CBE04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4793467019877864004CBE04 /* Foundation.framework */; };
 		4793467319877864004CBE04 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4793467219877864004CBE04 /* CoreGraphics.framework */; };
 		4793467519877864004CBE04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4793467419877864004CBE04 /* UIKit.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		474E99C919B2C1020079BC8D /* ImageViewManipulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewManipulator.h; sourceTree = "<group>"; };
+		474E99CA19B2C1020079BC8D /* ImageViewManipulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewManipulator.m; sourceTree = "<group>"; };
 		4793466D19877864004CBE04 /* prototype-tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "prototype-tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4793467019877864004CBE04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4793467219877864004CBE04 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,6 +130,8 @@
 				4793467719877864004CBE04 /* Supporting Files */,
 				479346A8198788BC004CBE04 /* ImageViewController.h */,
 				479346A9198788BC004CBE04 /* ImageViewController.m */,
+				474E99C919B2C1020079BC8D /* ImageViewManipulator.h */,
+				474E99CA19B2C1020079BC8D /* ImageViewManipulator.m */,
 			);
 			path = "prototype-tool";
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4793468A19877864004CBE04 /* ViewController.m in Sources */,
+				474E99CB19B2C1020079BC8D /* ImageViewManipulator.m in Sources */,
 				4793468119877864004CBE04 /* AppDelegate.m in Sources */,
 				479346AA198788BC004CBE04 /* ImageViewController.m in Sources */,
 				4793467D19877864004CBE04 /* main.m in Sources */,
@@ -476,6 +482,7 @@
 				479346A419877864004CBE04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		479346A519877864004CBE04 /* Build configuration list for PBXNativeTarget "prototype-toolTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +491,7 @@
 				479346A719877864004CBE04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

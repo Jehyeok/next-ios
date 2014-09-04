@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ImageViewManipulator.h"
 
-@interface ImageViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *photoView;
+@interface ImageViewController : UIViewController <UIScrollViewDelegate>
+@property (strong, nonatomic) UIImageView *photoView;
 @property (strong, nonatomic) UIImage *photo;
-
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollV;
+@property (strong, nonatomic) ImageViewManipulator *imageViewManipulator;
 @end

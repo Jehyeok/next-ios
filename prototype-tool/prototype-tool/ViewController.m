@@ -46,7 +46,7 @@
         
         ImageViewController* ivc = [self.storyboard instantiateViewControllerWithIdentifier:@"ImageVC"];
         ivc.photo = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        [self presentViewController:ivc animated:YES completion:nil];
+        [self.navigationController pushViewController:ivc animated:YES];
     }];
 }
 
